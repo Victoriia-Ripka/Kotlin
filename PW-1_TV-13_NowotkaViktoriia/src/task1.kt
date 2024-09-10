@@ -1,7 +1,4 @@
-import java.math.BigDecimal
-import java.math.RoundingMode
-import kotlin.math.round
-
+import math.round as round
 
 class Task1 {
     var carbon: Double = 0.0
@@ -11,47 +8,52 @@ class Task1 {
     var oxygen: Double = 0.0
     var water: Double = 0.0
     var ach: Double = 0.0
-
+    
     var workDryCoeff: Double = 0.0
     var workBurnCoeff: Double = 0.0
-
     var heatCombustion: Double = 0.0
     var dryFuelHeatCombustion: Double = 0.0
     var burnFuelHeatCombustion: Double = 0.0
-
-    // зробити рефактор + відловлючати помилки вводу
-    fun init() {
+    
+    init {
         do {
-            println("Введіть відсоткове значення складу палива; /nСума відсотків складових палива повинна дорівнювати 100.")
-            print("Відсоток вуглецю ")
-            carbon = readln().toDouble()
-            print("Відсоток водню ")
-            hydrogen = readln().toDouble()
-            print("Відсоток сірки ")
-            sulfur = readln().toDouble()
-            print("Відсоток азоту ")
-            nitrogen = readln().toDouble()
-            print("Відсоток кисню ")
-            oxygen = readln().toDouble()
-            print("Відсоток вологи ")
-            water = readln().toDouble()
-            print("Відсоток золи ")
-            ach = readln().toDouble()
+            println("Введіть відсоткове значення складу палива; \nСума відсотків складових палива повинна дорівнювати 100.")
+            try {
+                print("Відсоток вуглецю ")
+                carbon = readln().toDouble()
+                print("Відсоток водню ")
+                hydrogen = readln().toDouble()
+                print("Відсоток сірки ")
+                sulfur = readln().toDouble()
+                print("Відсоток азоту ")
+                nitrogen = readln().toDouble()
+                print("Відсоток кисню ")
+                oxygen = readln().toDouble()
+                print("Відсоток вологи ")
+                water = readln().toDouble()
+                print("Відсоток золи ")
+                ach = readln().toDouble()
+            } catch (e: NumberFormatException) {
+                println("Помилка: Введіть правильне числове значення.")
+            }
+
         } while (carbon + hydrogen + sulfur + nitrogen + oxygen + water + ach !== 100.0)
 
-        calculaleWorkDryCoeff()
-        calculaleWorkBurnCoeff()
+        calculateWorkDryCoeff()
+        calculateWorkBurnCoeff()
 
         calculateHeatCombustion()
         calculateDryFuelHeatCombustion()
         calculateBurnFuelHeatCombustion()
+
+        string()
     }
 
-    private fun calculaleWorkDryCoeff(): Unit {
+    private fun calculateWorkDryCoeff(): Unit {
         workDryCoeff = 100/(100- water)
     }
 
-    private fun calculaleWorkBurnCoeff(): Unit {
+    private fun calculateWorkBurnCoeff(): Unit {
         workBurnCoeff = 100/(100- water - ach)
     }
 
@@ -89,14 +91,10 @@ class Task1 {
     }
 
     private fun calculateBurnFuelHeatCombustion(): Unit {
-        burnFuelHeatCombustion = round((heatCombustion + 0.025 * water) * workBurnCoeff)
+        burnFuelHeatCombustion = (heatCombustion + 0.025 * water) * workBurnCoeff
     }
 
-    fun round(num: BigDecimal): Double {
-        return BigDecimal(num).setScale(2, RoundingMode.HALF_EVEN)
-    }
-
-    fun string(): String {
+    public fun string(): String {
         return "Паливо містить вуглецю $carbon%, водню $hydrogen%, сірки $sulfur%, " +
                 "азоту $nitrogen%, кисню $oxygen%, вологи $water% і золи $ach%."
     }
@@ -104,9 +102,6 @@ class Task1 {
 
 fun main() {
     val calculator = Task1()
-
-    calculator.init()
-    println(calculator.string())
 
     println("Коефіцієнт переходу від робочої до сухої маси становить: ${calculator.workDryCoeff}")
     println("Коефіцієнт переходу від робочої до горючої маси становить: ${calculator.workBurnCoeff}")
