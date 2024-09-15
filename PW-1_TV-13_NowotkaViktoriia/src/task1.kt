@@ -1,4 +1,5 @@
 import math.round as round
+import FuelCalculations as FuelCalculations
 
 
 fun main() {
@@ -25,21 +26,6 @@ fun main() {
     println("Нижча теплота згоряння для сухої маси за заданим складом компонентів палива становить: ${calculator.dryFuelHeatCombustion} кДж/кг.")
 
     println("Нижча теплота згоряння для горючої маси за заданим складом компонентів палива становить: ${calculator.burnFuelHeatCombustion} кДж/кг.")
-}
-
-
-interface FuelCalculations {
-    var workDryCoeff: Double
-    var workBurnCoeff: Double
-    var heatCombustion: Double
-    var dryFuelHeatCombustion: Double
-    var burnFuelHeatCombustion: Double
-
-    fun calculateWorkDryCoeff()
-    fun calculateWorkBurnCoeff()
-    fun calculateHeatCombustion()
-    fun calculateDryFuelHeatCombustion()
-    fun calculateBurnFuelHeatCombustion()
 }
 
 
@@ -92,7 +78,7 @@ class Task1: FuelCalculations {
         calculateDryFuelHeatCombustion()
         calculateBurnFuelHeatCombustion()
 
-        string()
+        showFuelCompound()
     }
 
     override fun calculateWorkDryCoeff(): Unit {
@@ -143,7 +129,7 @@ class Task1: FuelCalculations {
         return doubleArrayOf(round(burn_carbon), round(burn_hydrogen), round(burn_sulfur), round(burn_nitrogen), round(burn_oxygen), round(error))
     }
 
-    fun string(): String {
+    fun showFuelCompound(): String {
         return "Паливо містить вуглецю $carbon%, водню $hydrogen%, сірки $sulfur%, " +
                 "азоту $nitrogen%, кисню $oxygen%, вологи $water% і золи $ach%."
     }
