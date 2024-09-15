@@ -1,17 +1,17 @@
 package math
 
-class Operations {
 
+import java.util.Locale
+
+
+fun round(num: Int): Double {
+    return String.format(Locale.US, "%.2f", num).toDouble()
 }
 
-fun round() {
-
+fun round(num: Double): Double {
+    return String.format(Locale.US, "%.2f", num).toDouble()
 }
 
-//import java.math.BigDecimal
-//import java.math.RoundingMode
-//import kotlin.math.round
-
-//    fun round(num: BigDecimal): Double {
-//        return BigDecimal(num).setScale(2, RoundingMode.HALF_EVEN)
-//    }
+fun round(num: Float): Float {
+    return String.format(Locale.US, "%.2f", num).toFloat()
+}

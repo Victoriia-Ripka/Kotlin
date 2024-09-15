@@ -1,6 +1,47 @@
 import math.round as round
 
+
+fun main() {
+    val calculator = Task1()
+
+    println("Коефіцієнт переходу від робочої до сухої маси становить: ${round(calculator.workDryCoeff)}")
+    println("Коефіцієнт переходу від робочої до горючої маси становить: ${round(calculator.workBurnCoeff)}")
+
+    val dryFuelPercents = calculator.calculateDryFuelPercentage()
+    val burnFuelPercents = calculator.calculateBurnFuelPercentage()
+
+    println("""Відсотковий склад сухої маси палива:
+        вуглецю ${dryFuelPercents[0]}%, водню ${dryFuelPercents[1]}%, сірки ${dryFuelPercents[2]}%
+        азоту ${dryFuelPercents[3]}%, кисню ${dryFuelPercents[4]}%, золи ${dryFuelPercents[5]}% і помилка ${dryFuelPercents[6]}.
+    """.trimMargin())
+
+    println("""Відсотковий склад горючої маси палива: 
+        вуглецю ${burnFuelPercents[0]}%, водню ${burnFuelPercents[1]}%, сірки ${burnFuelPercents[2]}%
+        азоту ${burnFuelPercents[3]}%, кисню ${burnFuelPercents[4]}%% і помилка ${burnFuelPercents[5]}.
+    """.trimMargin())
+
+    println("Нижча теплота згоряння для робочої маси за заданим складом компонентів палива становить: ${calculator.heatCombustion} кДж/кг.")
+
+    println("Нижча теплота згоряння для сухої маси за заданим складом компонентів палива становить: ${calculator.dryFuelHeatCombustion} кДж/кг.")
+
+    println("Нижча теплота згоряння для горючої маси за заданим складом компонентів палива становить: ${calculator.burnFuelHeatCombustion} кДж/кг.")
+}
+
+
+// how to implement it in code?
+interface Fuel {
+    var carbon: Double?
+    var hydrogen: Double?
+    var sulfur: Double?
+    var nitrogen: Double?
+    var oxygen: Double?
+    var water: Double?
+    var ach: Double?
+}
+
+
 class Task1 {
+//    ?
     var carbon: Double = 0.0
     var hydrogen: Double = 0.0
     var sulfur: Double = 0.0
@@ -36,6 +77,9 @@ class Task1 {
             } catch (e: NumberFormatException) {
                 println("Помилка: Введіть правильне числове значення.")
             }
+            catch (e: Exception) {
+                println(e.message)
+            }
 
         } while (carbon + hydrogen + sulfur + nitrogen + oxygen + water + ach !== 100.0)
 
@@ -67,7 +111,7 @@ class Task1 {
 
         val error = 100.0 - (dry_carbon + dry_hydrogen + dry_sulfur + dry_nitrogen + dry_oxygen + dry_ach)
 
-        return doubleArrayOf(dry_carbon, dry_hydrogen, dry_sulfur, dry_nitrogen, dry_oxygen, dry_ach, error)
+        return doubleArrayOf(round(dry_carbon), round(dry_hydrogen), round(dry_sulfur), round(dry_nitrogen), round(dry_oxygen), round(dry_ach), round(error))
     }
 
     fun calculateBurnFuelPercentage(): DoubleArray {
@@ -79,19 +123,22 @@ class Task1 {
 
         val error = 100.0 - (burn_carbon + burn_hydrogen + burn_sulfur + burn_nitrogen + burn_oxygen)
 
-        return doubleArrayOf(burn_carbon, burn_hydrogen, burn_sulfur, burn_nitrogen, burn_oxygen, error)
+        return doubleArrayOf(round(burn_carbon), round(burn_hydrogen), round(burn_sulfur), round(burn_nitrogen), round(burn_oxygen), round(error))
     }
 
     private fun calculateHeatCombustion(): Unit {
-        heatCombustion = 339 * carbon + 1030 * hydrogen - 108.8 * ( oxygen - sulfur ) - 25 * water
+        val hc = 339 * carbon + 1030 * hydrogen - 108.8 * ( oxygen - sulfur ) - 25 * water
+        heatCombustion = round(hc)
     }
 
     private fun calculateDryFuelHeatCombustion(): Unit {
-        dryFuelHeatCombustion = (heatCombustion + 0.025 * water) * workDryCoeff
+        val dhc = (heatCombustion + 0.025 * water) * workDryCoeff
+        dryFuelHeatCombustion = round(dhc)
     }
 
     private fun calculateBurnFuelHeatCombustion(): Unit {
-        burnFuelHeatCombustion = (heatCombustion + 0.025 * water) * workBurnCoeff
+        val bhc = (heatCombustion + 0.025 * water) * workBurnCoeff
+        burnFuelHeatCombustion = round(bhc)
     }
 
     public fun string(): String {
@@ -100,28 +147,3 @@ class Task1 {
     }
 }
 
-fun main() {
-    val calculator = Task1()
-
-    println("Коефіцієнт переходу від робочої до сухої маси становить: ${calculator.workDryCoeff}")
-    println("Коефіцієнт переходу від робочої до горючої маси становить: ${calculator.workBurnCoeff}")
-
-    val dryFuelPercents = calculator.calculateDryFuelPercentage()
-    val burnFuelPercents = calculator.calculateBurnFuelPercentage()
-
-    println("""Відсотковий склад сухої маси палива:
-        вуглецю ${dryFuelPercents[0]}%, водню ${dryFuelPercents[1]}%, сірки ${dryFuelPercents[2]}%
-        азоту ${dryFuelPercents[3]}%, кисню ${dryFuelPercents[4]}%, золи ${dryFuelPercents[5]}% і помилка ${dryFuelPercents[6]}.
-    """.trimMargin())
-
-    println("""Відсотковий склад горючої маси палива: 
-        вуглецю ${burnFuelPercents[0]}%, водню ${burnFuelPercents[1]}%, сірки ${burnFuelPercents[2]}%
-        азоту ${burnFuelPercents[3]}%, кисню ${burnFuelPercents[4]}%% і помилка ${burnFuelPercents[5]}.
-    """.trimMargin())
-
-    println("Нижча теплота згоряння для робочої маси за заданим складом компонентів палива становить: ${calculator.heatCombustion} кДж/кг.")
-
-    println("Нижча теплота згоряння для сухої маси за заданим складом компонентів палива становить: ${calculator.dryFuelHeatCombustion} кДж/кг.")
-
-    println("Нижча теплота згоряння для горючої маси за заданим складом компонентів палива становить: ${calculator.burnFuelHeatCombustion} кДж/кг.")
-}
