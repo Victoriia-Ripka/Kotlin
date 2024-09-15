@@ -28,20 +28,22 @@ fun main() {
 }
 
 
-// how to implement it in code?
-interface Fuel {
-    var carbon: Double?
-    var hydrogen: Double?
-    var sulfur: Double?
-    var nitrogen: Double?
-    var oxygen: Double?
-    var water: Double?
-    var ach: Double?
+interface FuelCalculations {
+    var workDryCoeff: Double
+    var workBurnCoeff: Double
+    var heatCombustion: Double
+    var dryFuelHeatCombustion: Double
+    var burnFuelHeatCombustion: Double
+
+    fun calculateWorkDryCoeff()
+    fun calculateWorkBurnCoeff()
+    fun calculateHeatCombustion()
+    fun calculateDryFuelHeatCombustion()
+    fun calculateBurnFuelHeatCombustion()
 }
 
 
-class Task1 {
-//    ?
+class Task1: FuelCalculations {
     var carbon: Double = 0.0
     var hydrogen: Double = 0.0
     var sulfur: Double = 0.0
@@ -50,11 +52,11 @@ class Task1 {
     var water: Double = 0.0
     var ach: Double = 0.0
     
-    var workDryCoeff: Double = 0.0
-    var workBurnCoeff: Double = 0.0
-    var heatCombustion: Double = 0.0
-    var dryFuelHeatCombustion: Double = 0.0
-    var burnFuelHeatCombustion: Double = 0.0
+    override var workDryCoeff = 0.0
+    override var workBurnCoeff = 0.0
+    override var heatCombustion = 0.0
+    override var dryFuelHeatCombustion = 0.0
+    override var burnFuelHeatCombustion = 0.0
     
     init {
         do {
@@ -93,12 +95,27 @@ class Task1 {
         string()
     }
 
-    private fun calculateWorkDryCoeff(): Unit {
+    override fun calculateWorkDryCoeff(): Unit {
         workDryCoeff = 100/(100- water)
     }
 
-    private fun calculateWorkBurnCoeff(): Unit {
+    override fun calculateWorkBurnCoeff(): Unit {
         workBurnCoeff = 100/(100- water - ach)
+    }
+
+    override fun calculateHeatCombustion(): Unit {
+        val hc = 339 * carbon + 1030 * hydrogen - 108.8 * ( oxygen - sulfur ) - 25 * water
+        heatCombustion = round(hc)
+    }
+
+    override fun calculateDryFuelHeatCombustion(): Unit {
+        val dhc = (heatCombustion + 0.025 * water) * workDryCoeff
+        dryFuelHeatCombustion = round(dhc)
+    }
+
+    override fun calculateBurnFuelHeatCombustion(): Unit {
+        val bhc = (heatCombustion + 0.025 * water) * workBurnCoeff
+        burnFuelHeatCombustion = round(bhc)
     }
 
     fun calculateDryFuelPercentage(): DoubleArray {
@@ -126,22 +143,7 @@ class Task1 {
         return doubleArrayOf(round(burn_carbon), round(burn_hydrogen), round(burn_sulfur), round(burn_nitrogen), round(burn_oxygen), round(error))
     }
 
-    private fun calculateHeatCombustion(): Unit {
-        val hc = 339 * carbon + 1030 * hydrogen - 108.8 * ( oxygen - sulfur ) - 25 * water
-        heatCombustion = round(hc)
-    }
-
-    private fun calculateDryFuelHeatCombustion(): Unit {
-        val dhc = (heatCombustion + 0.025 * water) * workDryCoeff
-        dryFuelHeatCombustion = round(dhc)
-    }
-
-    private fun calculateBurnFuelHeatCombustion(): Unit {
-        val bhc = (heatCombustion + 0.025 * water) * workBurnCoeff
-        burnFuelHeatCombustion = round(bhc)
-    }
-
-    public fun string(): String {
+    fun string(): String {
         return "Паливо містить вуглецю $carbon%, водню $hydrogen%, сірки $sulfur%, " +
                 "азоту $nitrogen%, кисню $oxygen%, вологи $water% і золи $ach%."
     }
