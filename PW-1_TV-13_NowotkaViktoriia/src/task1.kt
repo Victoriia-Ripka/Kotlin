@@ -5,8 +5,8 @@ import FuelCalculations as FuelCalculations
 fun main() {
     val calculator = Task1()
 
-    println("Коефіцієнт переходу від робочої до сухої маси становить: ${round(calculator.workDryCoeff)}")
-    println("Коефіцієнт переходу від робочої до горючої маси становить: ${round(calculator.workBurnCoeff)}")
+    println("Коефіцієнт переходу від робочої до сухої маси становить: ${round(calculator.workDryCoeff!!)}")
+    println("Коефіцієнт переходу від робочої до горючої маси становить: ${round(calculator.workBurnCoeff!!)}")
 
     val dryFuelPercents = calculator.calculateDryFuelPercentage()
     val burnFuelPercents = calculator.calculateBurnFuelPercentage()
@@ -38,11 +38,14 @@ class Task1: FuelCalculations {
     var water: Double = 0.0
     var ach: Double = 0.0
     
-    override var workDryCoeff = 0.0
-    override var workBurnCoeff = 0.0
-    override var heatCombustion = 0.0
-    override var dryFuelHeatCombustion = 0.0
-    override var burnFuelHeatCombustion = 0.0
+    override var workDryCoeff: Double? = 0.0
+    override var workBurnCoeff: Double? = 0.0
+    override var burnWorkCoeff: Double? = null
+    override var dryWorkCoeff: Double? = null
+    override var heatCombustion: Double? = 0.0
+    override var workFuelHeatCombustion: Double? = null
+    override var dryFuelHeatCombustion: Double? = 0.0
+    override var burnFuelHeatCombustion: Double? = 0.0
     
     init {
         do {
@@ -95,22 +98,22 @@ class Task1: FuelCalculations {
     }
 
     override fun calculateDryFuelHeatCombustion(): Unit {
-        val dhc = (heatCombustion + 0.025 * water) * workDryCoeff
+        val dhc = (heatCombustion!! + 0.025 * water) * workDryCoeff!!
         dryFuelHeatCombustion = round(dhc)
     }
 
     override fun calculateBurnFuelHeatCombustion(): Unit {
-        val bhc = (heatCombustion + 0.025 * water) * workBurnCoeff
+        val bhc = (heatCombustion!! + 0.025 * water) * workBurnCoeff!!
         burnFuelHeatCombustion = round(bhc)
     }
 
     fun calculateDryFuelPercentage(): DoubleArray {
-        val dry_carbon = carbon * workDryCoeff
-        val dry_hydrogen = hydrogen * workDryCoeff
-        val dry_sulfur = sulfur * workDryCoeff
-        val dry_nitrogen = nitrogen * workDryCoeff
-        val dry_oxygen = oxygen * workDryCoeff
-        val dry_ach = ach * workDryCoeff
+        val dry_carbon = carbon * workDryCoeff!!
+        val dry_hydrogen = hydrogen * workDryCoeff!!
+        val dry_sulfur = sulfur * workDryCoeff!!
+        val dry_nitrogen = nitrogen * workDryCoeff!!
+        val dry_oxygen = oxygen * workDryCoeff!!
+        val dry_ach = ach * workDryCoeff!!
 
         val error = 100.0 - (dry_carbon + dry_hydrogen + dry_sulfur + dry_nitrogen + dry_oxygen + dry_ach)
 
@@ -118,11 +121,11 @@ class Task1: FuelCalculations {
     }
 
     fun calculateBurnFuelPercentage(): DoubleArray {
-        val burn_carbon = carbon * workBurnCoeff
-        val burn_hydrogen = hydrogen * workBurnCoeff
-        val burn_sulfur = sulfur * workBurnCoeff
-        val burn_nitrogen = nitrogen * workBurnCoeff
-        val burn_oxygen = oxygen * workBurnCoeff
+        val burn_carbon = carbon * workBurnCoeff!!
+        val burn_hydrogen = hydrogen * workBurnCoeff!!
+        val burn_sulfur = sulfur * workBurnCoeff!!
+        val burn_nitrogen = nitrogen * workBurnCoeff!!
+        val burn_oxygen = oxygen * workBurnCoeff!!
 
         val error = 100.0 - (burn_carbon + burn_hydrogen + burn_sulfur + burn_nitrogen + burn_oxygen)
 

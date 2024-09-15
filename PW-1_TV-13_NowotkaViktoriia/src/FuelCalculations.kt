@@ -1,13 +1,18 @@
 public interface FuelCalculations {
-    var workDryCoeff: Double
-    var workBurnCoeff: Double
-    var heatCombustion: Double
-    var dryFuelHeatCombustion: Double
-    var burnFuelHeatCombustion: Double
+    var workDryCoeff: Double?
+    var workBurnCoeff: Double?
+    var burnWorkCoeff: Double?
+    var dryWorkCoeff: Double?
+    var heatCombustion: Double?
+    var workFuelHeatCombustion: Double?
+    var dryFuelHeatCombustion: Double?
+    var burnFuelHeatCombustion: Double?
 
-    fun calculateWorkDryCoeff()
-    fun calculateWorkBurnCoeff()
-    fun calculateHeatCombustion()
-    fun calculateDryFuelHeatCombustion()
-    fun calculateBurnFuelHeatCombustion()
+    fun calculateWorkDryCoeff() {}
+    fun calculateWorkBurnCoeff() {}
+    fun calculateBurnWorkCoeff() {}
+    fun calculateDryWorkCoeff() {}
+    fun calculateHeatCombustion() {}
+    fun calculateDryFuelHeatCombustion() {}
+    fun calculateBurnFuelHeatCombustion() {}
 }
