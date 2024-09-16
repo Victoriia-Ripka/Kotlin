@@ -5,8 +5,8 @@ import FuelCalculations as FuelCalculations
 fun main() {
     val calculator = Task1()
 
-    println("Коефіцієнт переходу від робочої до сухої маси становить: ${round(calculator.workDryCoeff!!)}")
-    println("Коефіцієнт переходу від робочої до горючої маси становить: ${round(calculator.workBurnCoeff!!)}")
+    println("Коефіцієнт переходу від робочої до сухої маси становить: ${round(calculator.workDryCoeff!!)[0]}")
+    println("Коефіцієнт переходу від робочої до горючої маси становить: ${round(calculator.workBurnCoeff!!)[0]}")
 
     val dryFuelPercents = calculator.calculateDryFuelPercentage()
     val burnFuelPercents = calculator.calculateBurnFuelPercentage()
@@ -94,17 +94,17 @@ class Task1: FuelCalculations {
 
     override fun calculateHeatCombustion(): Unit {
         val hc = 339 * carbon + 1030 * hydrogen - 108.8 * ( oxygen - sulfur ) - 25 * water
-        heatCombustion = round(hc)
+        heatCombustion = round(hc)[0]
     }
 
     override fun calculateDryFuelHeatCombustion(): Unit {
         val dhc = (heatCombustion!! + 0.025 * water) * workDryCoeff!!
-        dryFuelHeatCombustion = round(dhc)
+        dryFuelHeatCombustion = round(dhc)[0]
     }
 
     override fun calculateBurnFuelHeatCombustion(): Unit {
         val bhc = (heatCombustion!! + 0.025 * water) * workBurnCoeff!!
-        burnFuelHeatCombustion = round(bhc)
+        burnFuelHeatCombustion = round(bhc)[0]
     }
 
     fun calculateDryFuelPercentage(): DoubleArray {
@@ -117,7 +117,7 @@ class Task1: FuelCalculations {
 
         val error = 100.0 - (dry_carbon + dry_hydrogen + dry_sulfur + dry_nitrogen + dry_oxygen + dry_ach)
 
-        return doubleArrayOf(round(dry_carbon), round(dry_hydrogen), round(dry_sulfur), round(dry_nitrogen), round(dry_oxygen), round(dry_ach), round(error))
+        return round(dry_carbon, dry_hydrogen, dry_sulfur, dry_nitrogen, dry_oxygen, dry_ach, error)
     }
 
     fun calculateBurnFuelPercentage(): DoubleArray {
@@ -129,7 +129,7 @@ class Task1: FuelCalculations {
 
         val error = 100.0 - (burn_carbon + burn_hydrogen + burn_sulfur + burn_nitrogen + burn_oxygen)
 
-        return doubleArrayOf(round(burn_carbon), round(burn_hydrogen), round(burn_sulfur), round(burn_nitrogen), round(burn_oxygen), round(error))
+        return round(burn_carbon, burn_hydrogen, burn_sulfur, burn_nitrogen, burn_oxygen, error)
     }
 
     fun showFuelCompound(): String {

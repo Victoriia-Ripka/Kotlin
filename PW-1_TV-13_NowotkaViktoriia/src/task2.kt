@@ -50,12 +50,12 @@ class Task2: FuelCalculations {
 
     override fun calculateBurnWorkCoeff(): Unit {
         val whc = (100 - burn_water - burn_ach) / 100
-        burnWorkCoeff = round(whc)
+        burnWorkCoeff = round(whc)[0]
     }
 
     override fun calculateDryWorkCoeff(): Unit {
         val whc = (100 - burn_water ) / 100
-        dryWorkCoeff = round(whc)
+        dryWorkCoeff = round(whc)[0]
     }
 
     fun calculateWorkFuelPercentage(): DoubleArray {
@@ -67,12 +67,12 @@ class Task2: FuelCalculations {
         val work_ach = burn_ach * dryWorkCoeff!!
         val work_vanadium = burn_vanadium * dryWorkCoeff!!
 
-        return doubleArrayOf(round(work_carbon), round(work_hydrogen), round(work_oxygen), round(work_sulfur), round(work_ach), round(work_vanadium))
+        return round(work_carbon, work_hydrogen, work_oxygen, work_sulfur, work_ach, work_vanadium)
     }
 
     override fun calculateHeatCombustion(): Unit {
         val hc = burnFuelHeatCombustion!! * burnWorkCoeff!! - 0.025 * burn_water
-        heatCombustion = round(hc)
+        heatCombustion = round(hc)[0]
     }
 
     fun showFuelCompound(): String {
