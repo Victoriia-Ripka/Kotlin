@@ -60,20 +60,6 @@
             android:textColorHint="#AFAFAF" />
 
         <EditText
-            android:id="@+id/s2"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"
-            android:height="50dp"
-            android:ems="10"
-            android:fontFamily="monospace"
-            android:hint="Сірка, %"
-            android:inputType="numberDecimal"
-            android:padding="10dp"
-            android:textColor="#1D1C1C"
-            android:textColorHint="#AFAFAF" />
-
-        <EditText
             android:id="@+id/o2"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -88,28 +74,14 @@
             android:textColorHint="#AFAFAF" />
 
         <EditText
-            android:id="@+id/w2"
+            android:id="@+id/s2"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_margin="10dp"
             android:height="50dp"
             android:ems="10"
             android:fontFamily="monospace"
-            android:hint="Волога, %"
-            android:inputType="numberDecimal"
-            android:padding="10dp"
-            android:textColor="#1D1C1C"
-            android:textColorHint="#AFAFAF" />
-
-        <EditText
-            android:id="@+id/a2"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"
-            android:height="50dp"
-            android:ems="10"
-            android:fontFamily="monospace"
-            android:hint="Зола, %"
+            android:hint="Сірка, %"
             android:inputType="numberDecimal"
             android:padding="10dp"
             android:textColor="#1D1C1C"
@@ -143,6 +115,34 @@
             android:textColor="#1D1C1C"
             android:textColorHint="#AFAFAF" />
 
+        <EditText
+            android:id="@+id/w2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:height="50dp"
+            android:ems="10"
+            android:fontFamily="monospace"
+            android:hint="Волога, %"
+            android:inputType="numberDecimal"
+            android:padding="10dp"
+            android:textColor="#1D1C1C"
+            android:textColorHint="#AFAFAF" />
+
+        <EditText
+            android:id="@+id/a2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:height="50dp"
+            android:ems="10"
+            android:fontFamily="monospace"
+            android:hint="Зола, %"
+            android:inputType="numberDecimal"
+            android:padding="10dp"
+            android:textColor="#1D1C1C"
+            android:textColorHint="#AFAFAF" />
+
         <Button
             android:id="@+id/do_task2"
             android:layout_width="match_parent"
@@ -171,7 +171,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/burnWorkCoeff"
+            android:id="@+id/burnWorkCoeff2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="16dp"
@@ -180,7 +180,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/dryWorkCoeff"
+            android:id="@+id/dryWorkCoeff2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="16dp"
@@ -198,7 +198,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/heatCombustion"
+            android:id="@+id/heatCombustion2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
