@@ -62,10 +62,12 @@ class FirstCalculatorActivity: AppCompatActivity() {
             return round(burn_carbon, burn_hydrogen, burn_sulfur, burn_nitrogen, burn_oxygen, error)
         }
 
-        fun showResult(workDryCoeffValue: Double, workBurnCoeffValue: Double, heatCombustionValue: Double, dryFuelHeatCombustionValue: Double, burnFuelHeatCombustionValue: Double) {
+        fun showResult(workDryCoeffValue: Double, workBurnCoeffValue: Double, dryFuelPercentsValue: DoubleArray, burnFuelPercentsValue: DoubleArray, heatCombustionValue: Double, dryFuelHeatCombustionValue: Double, burnFuelHeatCombustionValue: Double) {
             workDryCoeff?.text = "Коефіцієнт переходу від робочої до сухої маси становить: ${round(workDryCoeffValue)[0]}"
             workBurnCoeff?.text = "Коефіцієнт переходу від робочої до горючої маси становить: ${round(workBurnCoeffValue)[0]}"
 
+            dryFuelPercents?.text = """Відсотковий склад сухої маси палива: вуглецю ${dryFuelPercentsValue[0]}%, водню ${dryFuelPercentsValue[1]}%, сірки ${dryFuelPercentsValue[2]}% азоту ${dryFuelPercentsValue[3]}%, кисню ${dryFuelPercentsValue[4]}%, золи ${dryFuelPercentsValue[5]}% і помилка ${dryFuelPercentsValue[6]}."""
+            burnFuelPercents?.text = """Відсотковий склад горючої маси палива: вуглецю ${burnFuelPercentsValue[0]}%, водню ${burnFuelPercentsValue[1]}%, сірки ${burnFuelPercentsValue[2]}% азоту ${burnFuelPercentsValue[3]}%, кисню ${burnFuelPercentsValue[4]}%% і помилка ${burnFuelPercentsValue[5]}."""
 
             heatCombustion?.text = "Нижча теплота згоряння для робочої маси за заданим складом компонентів палива становить: ${heatCombustionValue} кДж/кг."
             dryFuelHeatCombustion?.text = "Нижча теплота згоряння для сухої маси за заданим складом компонентів палива становить: ${dryFuelHeatCombustionValue} кДж/кг."
@@ -76,19 +78,19 @@ class FirstCalculatorActivity: AppCompatActivity() {
             val workDryCoeffValue = 100/(100- w1Value)
             val workBurnCoeffValue = 100/(100- w1Value - a1Value)
 
-            val dryFuelPercentage = calculateDryFuelPercentage(workDryCoeffValue, h1Value, c1Value, s1Value, n1Value, o1Value, a1Value)
-            val burnFuelPercentage = calculateBurnFuelPercentage(workBurnCoeffValue, h1Value, c1Value, s1Value, n1Value, o1Value)
+            val dryFuelPercentageValues = calculateDryFuelPercentage(workDryCoeffValue, h1Value, c1Value, s1Value, n1Value, o1Value, a1Value)
+            val burnFuelPercentageValues = calculateBurnFuelPercentage(workBurnCoeffValue, h1Value, c1Value, s1Value, n1Value, o1Value)
 
             val hc = 339 * c1Value + 1030 * h1Value - 108.8 * ( o1Value - s1Value ) - 25 * w1Value
             val heatCombustionValue = round(hc)[0]
 
-            val dhc = (heatCombustionValue + 0.025 * w1Value) * workBurnCoeffValue
+            val dhc = (heatCombustionValue + 0.025 * w1Value) * workDryCoeffValue
             val dryFuelHeatCombustionValue = round(dhc)[0]
 
             val bhc = (heatCombustionValue + 0.025 * w1Value) * workBurnCoeffValue
             val burnFuelHeatCombustionValue = round(bhc)[0]
 
-            showResult(workDryCoeffValue, workBurnCoeffValue, heatCombustionValue, dryFuelHeatCombustionValue, burnFuelHeatCombustionValue)
+            showResult(workDryCoeffValue, workBurnCoeffValue, dryFuelPercentageValues, burnFuelPercentageValues, heatCombustionValue, dryFuelHeatCombustionValue, burnFuelHeatCombustionValue)
         }
 
         calculateBtn.setOnClickListener{
