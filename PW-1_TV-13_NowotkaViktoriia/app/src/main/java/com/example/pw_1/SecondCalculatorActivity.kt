@@ -86,9 +86,9 @@ class SecondCalculatorActivity: AppCompatActivity() {
             val requirement = checkRequirements(h2Value, c2Value, o2Value, s2Value)
 
             when(requirement){
-                true -> doCalculations(h2Value, c2Value, o2Value, s2Value, q2Value, v2Value, w2Value, a2Value)
+                true -> doCalculations(h2Value, c2Value, s2Value, o2Value, w2Value, a2Value, q2Value, v2Value)
                 false -> {
-                    errorText?.text = "Сума відсоткового складу палива повинна дорівнювати 100"
+                    errorText?.text = "Сума відсоткового складу палива (h + c + s + o) повинна == 100"
                     return@setOnClickListener
                 }
             }
