@@ -5,45 +5,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cb761a95-ec8b-4ecd-a8f0-0f9ca2d59d3d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/my_app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/app/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/app/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/app/src/androidTest/java/com/example/myapplication/ExampleInstrumentedTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/app/src/main/java/com/example/myapplication/MainActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/app/src/main/java/com/example/myapplication/ui/theme/Color.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/app/src/main/java/com/example/myapplication/ui/theme/Theme.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/app/src/main/java/com/example/myapplication/ui/theme/Type.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/app/src/main/res/drawable/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/app/src/main/res/values/themes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/app/src/main/res/xml/backup_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/app/src/test/java/com/example/myapplication/ExampleUnitTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/gradle/libs.versions.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_app/settings.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/app/build.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/app/proguard-rules.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/app/src/androidTest/java/com/example/pw_2/ExampleInstrumentedTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/app/src/main/java/com/example/pw_2/MainActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/app/src/main/java/com/example/pw_2/ui/theme/Color.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/app/src/main/java/com/example/pw_2/ui/theme/Theme.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/app/src/main/java/com/example/pw_2/ui/theme/Type.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/app/src/main/res/drawable/ic_launcher_foreground.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/app/src/main/res/values/themes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/app/src/main/res/xml/backup_rules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/app/src/test/java/com/example/pw_2/ExampleUnitTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/build.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/gradle/libs.versions.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PW-2_TV-13_NowotkaViktoriia/settings.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +84,7 @@
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "lab2",
     "kotlin-language-version-configured": "true",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
