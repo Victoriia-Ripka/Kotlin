@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FFFFFD"
+        android:isScrollContainer="true"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/title_task2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:fontFamily="serif"
+            android:text="Завдання 2"
+            android:textColor="#1D1C1C"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/error_text2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:textColor="#EB4747"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/h2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:height="50dp"
+            android:ems="10"
+            android:fontFamily="monospace"
+            android:hint="Водень, %"
+            android:inputType="numberDecimal"
+            android:padding="10dp"
+            android:textColor="#1D1C1C"
+            android:textColorHint="#AFAFAF" />
+
+        <EditText
+            android:id="@+id/c2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:height="50dp"
+            android:ems="10"
+            android:fontFamily="monospace"
+            android:hint="Вуглець, %"
+            android:inputType="numberDecimal"
+            android:padding="10dp"
+            android:textColor="#1D1C1C"
+            android:textColorHint="#AFAFAF" />
+
+        <EditText
+            android:id="@+id/o2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:height="50dp"
+            android:ems="10"
+            android:fontFamily="monospace"
+            android:hint="Кисень, %"
+            android:inputType="numberDecimal"
+            android:padding="10dp"
+            android:textColor="#1D1C1C"
+            android:textColorHint="#AFAFAF" />
+
+        <EditText
+            android:id="@+id/s2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:height="50dp"
+            android:ems="10"
+            android:fontFamily="monospace"
+            android:hint="Сірка, %"
+            android:inputType="numberDecimal"
+            android:padding="10dp"
+            android:textColor="#1D1C1C"
+            android:textColorHint="#AFAFAF" />
+
+        <EditText
+            android:id="@+id/q2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:height="50dp"
+            android:ems="10"
+            android:fontFamily="monospace"
+            android:hint="Нижча теплота згоряння, МДж/кг"
+            android:inputType="numberDecimal"
+            android:padding="10dp"
+            android:textColor="#1D1C1C"
+            android:textColorHint="#AFAFAF" />
+
+        <EditText
+            android:id="@+id/v2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:height="50dp"
+            android:ems="10"
+            android:fontFamily="monospace"
+            android:hint="Ванадій, мг"
+            android:inputType="numberDecimal"
+            android:padding="10dp"
+            android:textColor="#1D1C1C"
+            android:textColorHint="#AFAFAF" />
+
+        <EditText
+            android:id="@+id/w2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:height="50dp"
+            android:ems="10"
+            android:fontFamily="monospace"
+            android:hint="Волога, %"
+            android:inputType="numberDecimal"
+            android:padding="10dp"
+            android:textColor="#1D1C1C"
+            android:textColorHint="#AFAFAF" />
+
+        <EditText
+            android:id="@+id/a2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:height="50dp"
+            android:ems="10"
+            android:fontFamily="monospace"
+            android:hint="Зола, %"
+            android:inputType="numberDecimal"
+            android:padding="10dp"
+            android:textColor="#1D1C1C"
+            android:textColorHint="#AFAFAF" />
+
+        <Button
+            android:id="@+id/do_task2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#0073e6"
+            android:fontFamily="monospace"
+            android:padding="16dp"
+            android:text="Обчислити"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/from_2_back"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#3F51B5"
+            android:fontFamily="monospace"
+            android:padding="16dp"
+            android:text="Назад"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/burnWorkCoeff2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:textColor="#1D1C1C"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/dryWorkCoeff2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:textColor="#1D1C1C"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/workFuelPercents"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:textColor="#1D1C1C"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/heatCombustion2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:textColor="#1D1C1C"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+</ScrollView>
