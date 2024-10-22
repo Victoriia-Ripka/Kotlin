@@ -1,9 +1,12 @@
-package com.example.pw_1
+package com.example.pw3
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.pw3.R
+import kotlin.math.pow
 
 class MainActivity: AppCompatActivity() {
 
@@ -11,18 +14,19 @@ class MainActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val buttonTask1: Button = findViewById(R.id.task1)
-        val buttonTask2: Button = findViewById(R.id.task2)
+        val Pc_input: EditText = findViewById(R.id.Pc)
+        val sigma_input: EditText = findViewById(R.id.sigma)
+        val B_input: EditText = findViewById(R.id.B)
 
-        buttonTask1.setOnClickListener{
-            val intent = Intent(this, FirstCalculatorActivity::class.java)
-            startActivity(intent)
-        }
+        val error_text1: TextView = findViewById(R.id.error_text1)
+        val error_text2: TextView = findViewById(R.id.error_text2)
+        val error_text3: TextView = findViewById(R.id.error_text3)
 
-        buttonTask2.setOnClickListener{
-            val intent = Intent(this, SecondCalculatorActivity::class.java)
-            startActivity(intent)
-        }
+        val doBtn: Button = findViewById(R.id.do_calculations)
+        val resetBtn: Button = findViewById(R.id.reset)
+
+        val profit: TextView = findViewById(R.id.profit)
+
 
     }
 }
