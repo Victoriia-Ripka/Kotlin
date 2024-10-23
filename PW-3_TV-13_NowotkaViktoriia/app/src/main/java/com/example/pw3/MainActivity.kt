@@ -5,7 +5,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-//import kotlin.math.pow
+import kotlin.math.pow
+import kotlin.math.exp
+import kotlin.math.PI
+import kotlin.math.sqrt
 import com.example.pw3.round as round
 
 class MainActivity: AppCompatActivity() {
@@ -26,12 +29,53 @@ class MainActivity: AppCompatActivity() {
 
         val profit: TextView = findViewById(R.id.profit)
 
+        fun wCalculate(p: Double, sigmaWValue: Double, type: String): Double {
+            return when (type) {
+                "with" -> p * 24 * sigmaWValue
+                "without" -> p * 24 * (1 - sigmaWValue)
+                else -> 0.0
+            }
+        }
+
+        fun profFineCalculate(w: Double, b: Double): Double {
+            return w*b
+        }
+
+        fun trapezoidalRule(f: (Double) -> Double, a: Double, b: Double, n: Int): Double {
+            val h = (b - a) / n    // Width of each trapezoid
+            var sum = 0.5 * (f(a) + f(b)) // Start with half the endpoints
+            for (i in 1 until n) {
+                val x = a + i * h
+                sum += f(x)
+            }
+            return h * sum
+        }
+
         fun showResult(profitValue: Double) {
             profit.text = "Прибуток становитиме ${round(profitValue)[0]} грн"
         }
 
         fun calculateP(PcValue: Double, sigmaValue: Double, BValue: Double): Double {
-            val profitValue =  0.0
+            val (x, y) = Pair(PcValue * 0.95,PcValue * 1.05)
+
+            val pdFunction = { p: Double -> exp(-((p - PcValue).pow(2))/(2*sigmaValue.pow(2))) / (sigmaValue * sqrt(2*PI))}
+            val sigmaWValue = trapezoidalRule(pdFunction, x, y, 100)
+
+            val w1 = wCalculate(PcValue, sigmaWValue, "with")
+            val prof1 = profFineCalculate(w1, BValue)
+            val w2 = wCalculate(PcValue, sigmaWValue, "without")
+            val fine1 = profFineCalculate(w2, BValue)
+
+            val pdFunctionUpdated = { p: Double -> exp(-((p - PcValue).pow(2))/(0.25.pow(2)*2)) / (0.25 * sqrt(2*PI))}
+            val sigmaWValueUpdated = trapezoidalRule(pdFunctionUpdated, x, y, 100)
+
+            val w3 = wCalculate(PcValue, sigmaWValueUpdated, "with")
+            val prof2 = profFineCalculate(w3, BValue)
+            val w4 = wCalculate(PcValue, sigmaWValueUpdated, "without")
+            val fine2 = profFineCalculate(w4, BValue)
+
+
+            val profitValue = prof2 - fine2
             return profitValue
         }
 
