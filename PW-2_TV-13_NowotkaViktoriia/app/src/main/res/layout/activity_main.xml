@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/task_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="serif"
+            android:text="Завдання 1"
+            android:textColor="#1D1C1C"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Мобільний калькулятор для розрахунку валових викидів шкідливих речовин у вигляді суспендованих твердих частинок при спалювання вугілля, мазуту та природного газу "
+            android:textColor="#1D1C1C"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/desc2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Введіть кількість палива (т)"
+            android:textColor="#1D1C1C"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/error_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:textColor="#F44336" />
+
+        <EditText
+            android:id="@+id/coal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="8dp"
+            android:ems="10"
+            android:hint="донецьке газове вугілля марки ГР "
+            android:inputType="numberDecimal"
+            android:textColor="#1D1C1C"
+            android:textColorHint="#AFAFAF" />
+
+        <EditText
+            android:id="@+id/fuel"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="8dp"
+            android:ems="10"
+            android:hint="високосірчистий мазут марки 40"
+            android:inputType="numberDecimal"
+            android:textColor="#1D1C1C"
+            android:textColorHint="#AFAFAF" />
+
+        <EditText
+            android:id="@+id/gas"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="16dp"
+            android:ems="10"
+            android:hint="природний газ із газопроводу Ур-Уж "
+            android:inputType="numberDecimal"
+            android:textColor="#1D1C1C"
+            android:textColorHint="#AFAFAF" />
+
+        <Button
+            android:id="@+id/do_calculations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="#0073e6"
+            android:text="Обчислити"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/reset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="#3F51B5"
+            android:text="Очистити"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/k_coal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:textColor="#1D1C1C"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/e_coal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:textColor="#1D1C1C"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/k_fuel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:textColor="#1D1C1C"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/e_fuel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:textColor="#1D1C1C"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/k_gas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:textColor="#1D1C1C"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/e_gas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:textColor="#1D1C1C"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</ScrollView>
