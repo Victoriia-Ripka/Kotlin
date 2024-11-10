@@ -13,14 +13,16 @@ import androidx.navigation.compose.composable
 import com.example.pw_4.ui.theme.PW4Theme
 import androidx.navigation.compose.rememberNavController
 import com.example.pw_4.services.CalculatorService
-import com.example.pw_4.ui.calculator.CalculatorScreen
-//import com.example.pw_4.ui.calculator2.Calculator2Screen
+import com.example.pw_4.ui.calculators.Calculator1Screen
+import com.example.pw_4.ui.calculators.Calculator2Screen
+import com.example.pw_4.ui.calculators.Calculator3Screen
 import com.example.pw_4.ui.entry.EntryScreen
 
 enum class Routes {
     MAIN_SCREEN,
     CALCULATOR_1,
-    CALCULATOR_2
+    CALCULATOR_2,
+    CALCULATOR_3
 }
 
 class MainActivity : ComponentActivity() {
@@ -41,19 +43,27 @@ class MainActivity : ComponentActivity() {
                             EntryScreen(
                                 onCalculator1Navigate = { navController.navigate(route = Routes.CALCULATOR_1.name) },
                                 onCalculator2Navigate = { navController.navigate(route = Routes.CALCULATOR_2.name) },
+                                onCalculator3Navigate = { navController.navigate(route = Routes.CALCULATOR_3.name) },
                             )
                         }
                         composable(route = Routes.CALCULATOR_1.name) {
-                            CalculatorScreen(
+                            Calculator1Screen(
                                 goBack = { navController.navigate(route = Routes.MAIN_SCREEN.name )},
                                 calculatorService = calculatorService
                             )
                         }
-//                        composable(route = Routes.CALCULATOR_2.name) {
-//                            Calculator2Screen(goBack = { navController.navigate(route = Routes.MAIN_SCREEN.name )},
-//                                calculatorService = calculatorService
-//                            )
-//                        }
+                        composable(route = Routes.CALCULATOR_2.name) {
+                            Calculator2Screen(
+                                goBack = { navController.navigate(route = Routes.MAIN_SCREEN.name )},
+                                calculatorService = calculatorService
+                            )
+                        }
+                        composable(route = Routes.CALCULATOR_3.name) {
+                            Calculator3Screen(
+                                goBack = { navController.navigate(route = Routes.MAIN_SCREEN.name )},
+                                calculatorService = calculatorService
+                            )
+                        }
                     }
                 }
             }

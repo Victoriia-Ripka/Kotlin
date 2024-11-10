@@ -1,4 +1,4 @@
-package com.example.pw_4.ui.calculator
+package com.example.pw_4.ui.calculators
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 import com.example.pw_4.services.CalculatorService
 
 @Composable
-fun CalculatorScreen(
+fun Calculator2Screen(
     goBack: () -> Unit,
     calculatorService: CalculatorService
 ) {
