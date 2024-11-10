@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -32,7 +33,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             PW4Theme {
                 val navController = rememberNavController()
-                val calculatorService = CalculatorService()
+                val calculatorService = remember { CalculatorService(context = this) }
+
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     NavHost(
                         navController = navController,
@@ -49,7 +51,7 @@ class MainActivity : ComponentActivity() {
                         composable(route = Routes.CALCULATOR_1.name) {
                             Calculator1Screen(
                                 goBack = { navController.navigate(route = Routes.MAIN_SCREEN.name )},
-                                calculatorService = calculatorService
+//                                calculatorService = calculatorService
                             )
                         }
                         composable(route = Routes.CALCULATOR_2.name) {
