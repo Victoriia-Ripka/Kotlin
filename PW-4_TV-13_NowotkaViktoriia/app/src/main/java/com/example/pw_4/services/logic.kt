@@ -46,7 +46,7 @@ class CalculatorService(private val context: Context) {
         Log.d("CalculatorService", "cableData: $cableData")
 
         val U = 10.0
-        val IK = 2.5
+        val IK = 2.5*1000
         val tF = 2.5
         val N = 2.0*1000
         val SM = 1300.0
@@ -56,13 +56,14 @@ class CalculatorService(private val context: Context) {
         Log.d("CalculatorService", "Jek: $Jek")
 
         val IM = (SM / 2) / (sqrt(3.0) * U)
-        Log.d("CalculatorService", "IM: $cableData")
+        Log.d("CalculatorService", "IM: $IM")
         val IMPa = 2 * IM
 
         val Sek = IM / Jek
 
         val CT = 92
         val Smin = IK * sqrt(tF) / CT
+        Log.d("CalculatorService", "Smin: $Smin")
         val result = roundUpToNearest(Smin, 10)
 
         return result
