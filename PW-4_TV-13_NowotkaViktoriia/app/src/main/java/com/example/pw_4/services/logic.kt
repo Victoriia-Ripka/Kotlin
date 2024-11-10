@@ -1,7 +1,6 @@
 package com.example.pw_4.services
 
-import kotlin.math.sqrt
-import kotlin.math.ceil
+import kotlin.math.*
 import android.util.Log
 import android.content.Context
 import org.json.JSONObject
@@ -68,6 +67,21 @@ class CalculatorService(private val context: Context) {
 
         return result
     }
+
+    fun determinateCurrent(u: Number = 10.5, sk: Number = 200.0, sNomt: Number = 6.3): Double {
+        val formattedU = u.toDouble()
+        val formattedSk = sk.toDouble()
+        val formattedSnomt = sNomt.toDouble()
+
+        val Xc = formattedU.pow(2.0) / formattedSk
+        val Xt = formattedU / 100 * (formattedU.pow(2) / formattedSnomt)
+        val X = Xc + Xt
+        val Ip0 = formattedU / (sqrt(3.0) * X)
+
+        val roundedValue = String.format("%.2f", Ip0).toDouble()
+        return roundedValue
+    }
+
 
     fun sumValues(value1: Int, value2: Int) = value1 + value2
 

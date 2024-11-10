@@ -20,37 +20,46 @@ fun Calculator2Screen(
     goBack: () -> Unit,
     calculatorService: CalculatorService
 ) {
-    var value1 by remember { mutableStateOf("") }
-    var value2 by remember { mutableStateOf("") }
+    var uValue by remember { mutableStateOf("") }
+    var skValue by remember { mutableStateOf("") }
+    var sNomtValue by remember { mutableStateOf("") }
     var result by remember { mutableStateOf("") }
 
-    fun calculateSum(): Unit {
-        val formattedValue1 = value1.toIntOrNull() ?: 0;
-        val formattedValue2 = value2.toIntOrNull() ?: 0;
+    fun calculateCurrent(): Unit {
+        val formattedU = uValue.toDoubleOrNull() ?: 0;
+        val formattedSk = skValue.toDoubleOrNull() ?: 0;
+        val formattedsNomt = sNomtValue.toDoubleOrNull() ?: 0;
 
-        result = calculatorService.sumValues(formattedValue1, formattedValue2).toString()
+        result = calculatorService.determinateCurrent(formattedU, formattedSk, formattedsNomt).toString()
+
     }
 
     Column(modifier = Modifier.padding(all = 15.dp)) {
         TextField(
-            value = value1,
-            onValueChange = { value1 = it },
-            label = { Text("Enter first number") },
+            value = uValue,
+            onValueChange = { uValue = it },
+            label = { Text("Ведіть напругу") },
             maxLines = 1,
         )
         TextField(
-            value = value2,
-            onValueChange = { value2 = it },
-            label = { Text("Enter second number") },
+            value = skValue,
+            onValueChange = { skValue = it },
+            label = { Text("Введіть потужність КЗ") },
+            maxLines = 1,
+        )
+        TextField(
+            value = sNomtValue,
+            onValueChange = { sNomtValue = it },
+            label = { Text("Введіть номінальну потужність трансформатора") },
             maxLines = 1,
         )
         Button(
-            onClick = { calculateSum() }
+            onClick = { calculateCurrent() }
         ) {
-            Text("Calculate sum")
+            Text("Розрахувати")
         }
         if (result.isNotEmpty()) {
-            Text("Result $result")
+            Text("Результат:  $result кА")
         }
         Box(
             modifier = Modifier.padding(top = 100.dp)
@@ -58,7 +67,7 @@ fun Calculator2Screen(
             Button(
                 onClick = goBack
             ) {
-                Text("Go back")
+                Text("Повернутися до головного меню")
             }
         }
     }
