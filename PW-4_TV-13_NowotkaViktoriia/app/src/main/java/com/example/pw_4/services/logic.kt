@@ -7,7 +7,6 @@ import org.json.JSONObject
 import org.json.JSONArray
 
 class CalculatorService(private val context: Context) {
-//    private val cableData: List<CableTime> = loadCableData(context)
 
     private fun roundUpToNearest(number: Double, base: Int): Int {
         return (ceil(number / base.toDouble()) * base).toInt()
@@ -144,9 +143,12 @@ class CalculatorService(private val context: Context) {
         val i3LNmin = uKMax * 1000 / (sqrt(3.0) * zSumMin)
         val i2LNmin = i3LNmin * sqrt(3.0) / 2
 
-//        Log.d("Service", "i2SHnmin: $i2SHnmin")
+        val roundedValue1 = String.format("%.2f", i3LN).toDouble()
+        val roundedValue2 = String.format("%.2f", i2LN).toDouble()
+        val roundedValue3 = String.format("%.2f", i3LNmin).toDouble()
+        val roundedValue4 = String.format("%.2f", i2LNmin).toDouble()
 
-        return arrayOf(i3LN, i2LN, i3LNmin, i2LNmin)
+        return arrayOf(roundedValue1, roundedValue2, roundedValue3, roundedValue4)
     }
 
 }

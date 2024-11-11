@@ -50,8 +50,7 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(route = Routes.CALCULATOR_1.name) {
                             Calculator1Screen(
-                                goBack = { navController.navigate(route = Routes.MAIN_SCREEN.name )},
-//                                calculatorService = calculatorService
+                                goBack = { navController.navigate(route = Routes.MAIN_SCREEN.name )}
                             )
                         }
                         composable(route = Routes.CALCULATOR_2.name) {

@@ -11,7 +11,7 @@ fun loadCableData(context: Context): JSONArray {
         val json = inputStream.bufferedReader().use { it.readText() }
         return JSONArray(json)
     } catch (e: Exception) {
-        e.printStackTrace()  // Handle the error, maybe log it for debugging
+        e.printStackTrace()
         throw FileNotFoundException("The file cable_data.json was not found in the assets folder.")
     }
 }
