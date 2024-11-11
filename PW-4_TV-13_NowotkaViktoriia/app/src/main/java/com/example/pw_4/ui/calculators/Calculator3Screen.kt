@@ -20,37 +20,25 @@ fun Calculator3Screen(
     goBack: () -> Unit,
     calculatorService: CalculatorService
 ) {
-    var value1 by remember { mutableStateOf("") }
-    var value2 by remember { mutableStateOf("") }
-    var result by remember { mutableStateOf("") }
+    var resultArray by remember { mutableStateOf(arrayOf<Double>()) }
+    val i3LN = if (resultArray.isNotEmpty()) resultArray[0] else 0.0
+    val i2LN = if (resultArray.isNotEmpty()) resultArray[1] else 0.0
+    val i3LNmin = if (resultArray.isNotEmpty()) resultArray[2] else 0.0
+    val i2LNmin = if (resultArray.isNotEmpty()) resultArray[3] else 0.0
 
-    fun calculateSum(): Unit {
-        val formattedValue1 = value1.toIntOrNull() ?: 0;
-        val formattedValue2 = value2.toIntOrNull() ?: 0;
-
-        result = calculatorService.sumValues(formattedValue1, formattedValue2).toString()
+    fun calculateResult(): Unit {
+        resultArray = calculatorService.determinateSubstationCurrent()
     }
 
     Column(modifier = Modifier.padding(all = 15.dp)) {
-        TextField(
-            value = value1,
-            onValueChange = { value1 = it },
-            label = { Text("Enter first number") },
-            maxLines = 1,
-        )
-        TextField(
-            value = value2,
-            onValueChange = { value2 = it },
-            label = { Text("Enter second number") },
-            maxLines = 1,
-        )
         Button(
-            onClick = { calculateSum() }
+            onClick = { calculateResult() }
         ) {
-            Text("Calculate sum")
+            Text("Розрахувати")
         }
-        if (result.isNotEmpty()) {
-            Text("Result $result")
+        if (resultArray.isNotEmpty()) {
+            Text("Результат: I 3 = $i3LN А, I 2 = $i2LN А, I 3 min = $i3LNmin А, I 2 min = $i2LNmin А. \n" +
+            "Аварійний режим не передбачено")
         }
         Box(
             modifier = Modifier.padding(top = 100.dp)
@@ -58,7 +46,7 @@ fun Calculator3Screen(
             Button(
                 onClick = goBack
             ) {
-                Text("Go back")
+                Text("Повернутися до головного меню")
             }
         }
     }
