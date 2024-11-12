@@ -32,7 +32,7 @@ fun EntryScreen(
         Header()
 
         FancyButton(
-            text = "Калькулятор 1 ()",
+            text = "Калькулятор 1",
             onClick = { onCalculator1Navigate() },
             textStyle = TextStyle(fontSize = 18.sp, fontWeight = FontWeight.Bold)
         )
@@ -40,7 +40,7 @@ fun EntryScreen(
         Spacer(modifier = Modifier.height(30.dp))
 
         FancyButton(
-            text = "Калькулятор 2 ()",
+            text = "Калькулятор 2",
             onClick = { onCalculator2Navigate() },
             textStyle = TextStyle(fontSize = 18.sp, fontWeight = FontWeight.Bold)
         )

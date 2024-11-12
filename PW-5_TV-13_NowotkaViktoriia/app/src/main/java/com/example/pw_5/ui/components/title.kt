@@ -11,7 +11,6 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun Title(
     text: String,
-    modifier: Modifier = Modifier,
     textStyle: TextStyle = TextStyle.Default,
 ) {
     Text(

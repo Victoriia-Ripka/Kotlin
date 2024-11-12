@@ -13,7 +13,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pw_5.ui.entry.titleBoxModifier
 
-
 @Composable
 fun Header(){
     Column(
