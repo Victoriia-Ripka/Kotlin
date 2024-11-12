@@ -43,4 +43,22 @@ class CalculatorService{
 
 
     }
+
+    fun calculateLoses(): String {
+        var z_pera = 23.6
+        var z_perp = 17.6
+        var w = 0.01
+        var t_v = 0.045
+
+        var t_m = 5.12 * 1000 * 6451
+        var k_p = 0.004
+
+        var m_w_neda = w * t_v * t_m
+        var m_w_nedp = k_p * t_m
+        Log.d("Calculator2", "m_w_neda: $m_w_neda")
+        Log.d("Calculator2", "m_w_nedp: $m_w_nedp")
+
+        var m_z_per = z_pera * m_w_neda + z_perp * m_w_nedp
+        return "%.2f".format(m_z_per)
+    }
 }
