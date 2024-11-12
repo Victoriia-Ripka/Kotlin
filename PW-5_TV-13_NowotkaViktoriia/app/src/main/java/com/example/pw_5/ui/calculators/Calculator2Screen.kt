@@ -8,13 +8,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.pw_5.services.CalculatorService
 import com.example.pw_5.ui.components.FancyButton
 import com.example.pw_5.ui.components.Header
 import com.example.pw_5.ui.components.Title
 
 @Composable
 fun Calculator2Screen(
-    goBack: () -> Unit
+    goBack: () -> Unit,
+    calculatorService: CalculatorService
 ) {
     Column(){
         Header()

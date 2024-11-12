@@ -7,15 +7,16 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.pw_5.ui.theme.PW_5Theme
 import androidx.navigation.compose.rememberNavController
 import com.example.pw_5.services.CalculatorService
 import com.example.pw_5.ui.calculators.Calculator1Screen
 import com.example.pw_5.ui.calculators.Calculator2Screen
 import com.example.pw_5.ui.entry.EntryScreen
+import com.example.pw_5.ui.theme.PW_5Theme
 
 enum class Routes {
     MAIN_SCREEN,
@@ -30,6 +31,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             PW_5Theme {
                 val navController = rememberNavController()
+                val calculatorService = remember { CalculatorService() }
 
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     NavHost(
@@ -45,12 +47,14 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(route = Routes.CALCULATOR_1.name) {
                             Calculator1Screen(
-                                goBack = { navController.navigate(route = Routes.MAIN_SCREEN.name )}
+                                goBack = { navController.navigate(route = Routes.MAIN_SCREEN.name )},
+                                calculatorService = calculatorService
                             )
                         }
                         composable(route = Routes.CALCULATOR_2.name) {
                             Calculator2Screen(
-                                goBack = { navController.navigate(route = Routes.MAIN_SCREEN.name )}
+                                goBack = { navController.navigate(route = Routes.MAIN_SCREEN.name )},
+                                calculatorService = calculatorService
                             )
                         }
                     }
