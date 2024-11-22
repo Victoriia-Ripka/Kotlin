@@ -34,44 +34,43 @@ fun CalculatorScreen(
         repeat(8) { epInputs.add(EPInput()) }
     }
 
-//    var nameEP by remember { mutableStateOf("") }
-//    var coeffUsefulActInput by remember { mutableStateOf("") }
-//    var coeffPowerInput by remember { mutableStateOf("") }
-//    var voltageInput by remember { mutableStateOf("") }
-//    var countEPInput by remember { mutableStateOf("") }
-//    var capacityEPInput by remember { mutableStateOf("") }
-//    var coefUsageInput by remember { mutableStateOf("") }
-//    var coeffReactPowerInput by remember { mutableStateOf("") }
-
     var resultArray by remember { mutableStateOf(arrayOf(0.0, 0.0)) }
 
     fun calculate() {
-//        val coeffUsefulAct = coeffUsefulActInput.toDoubleOrNull() ?: 0.0
-//        val coeffPower = coeffPowerInput.toDoubleOrNull() ?: 0.0
-//        val voltage = voltageInput.toDoubleOrNull() ?: 0.0
-//        val countEP = countEPInput.toIntOrNull() ?: 0
-//        val capacityEP = capacityEPInput.toDoubleOrNull() ?: 0.0
-//        val coefUsage = coefUsageInput.toDoubleOrNull() ?: 0.0
-//        val coeffReactPower = coeffReactPowerInput.toDoubleOrNull() ?: 0.0
+//      step3
+        val NPhList = calculatorService.calculateNPh(epInputs)
+//        Log.d("Calculator1", "NPhList: $NPhList")
 
-//        step3
-        val NPh = calculatorService.calculateNPh(epInputs )
-        Log.d("Calculator", "NPh: $NPh")
-//        val I = calculatorService.calculateI(epInputs)
-//        Log.d("Calculator", "I: $I")
+        val NPhSum = calculatorService.calculateSumNPh(NPhList)
+//        Log.d("Calculator1", "NPh: $NPhSum")
 
-//        step4
-//        val KV = calculatorService.calculateGroupUtilizationCoeff(epInputs)
-//        Log.d("Calculator", "KV: $KV")
+        val I = calculatorService.calculateI(epInputs)
+//        Log.d("Calculator1", "I: $I")
 
-//        val nE = calculatorService.calculateEfCount(epInputs)
-//        Log.d("Calculator", "nE: $nE")
+        val sumCount = calculatorService.calculateSumCount(epInputs)
+//        Log.d("Calculator1", "sumCount: $sumCount")
+
+//      step4
+        val KV = calculatorService.calculateGroupUtilizationCoeff(epInputs)
+//        Log.d("Calculator1", "KV: $KV")
+
+        val nE = calculatorService.calculateEfCount(epInputs)
+        Log.d("Calculator2", "nE: $nE")
 
 //        how??
         val Kp = 1.25
 
-//        val Pp = calculatorService.calculatePp(Kp, KV, epInputs)
-//        Log.d("Calculator", "Pp: $Pp")
+        val Pp = calculatorService.calculatePp(Kp, epInputs)
+//        Log.d("Calculator2", "Pp: $Pp")
+
+        val Qp = calculatorService.calculateQp(nE, epInputs)
+        Log.d("Calculator2", "Qp: $Qp")
+
+        val Sp = calculatorService.calculateSp(Pp, Qp)
+        Log.d("Calculator2", "Sp: $Sp")
+
+        val Ip = calculatorService.calculateIp(Pp, epInputs[3].voltage.toDouble())
+//        Log.d("Calculator2", "Ip: $Ip")
 
     }
 
