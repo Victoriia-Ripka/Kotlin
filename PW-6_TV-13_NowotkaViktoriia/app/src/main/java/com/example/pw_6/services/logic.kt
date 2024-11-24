@@ -7,6 +7,31 @@ import kotlin.math.roundToInt
 import kotlin.math.sqrt
 
 class CalculatorService{
+    fun calculateNPK(epInputs: List<EPInput>): List<Double>{
+        val nPK = epInputs.map { input ->
+            val count = input.count.toIntOrNull() ?: 0
+            val capacity = input.capacity.toDoubleOrNull() ?: 0.0
+            val coefUsage = input.coefUsage.toDoubleOrNull() ?: 0.0
+
+            count.toDouble() * capacity * coefUsage
+        }
+        return nPK
+    }
+
+    fun calculatePKTgSum(epInputs: List<EPInput>): Double {
+        val nPK = calculateNPK(epInputs)
+
+        val kptg = epInputs.mapIndexed { index, input ->
+            val coeffReactPower = input.coeffReactPower.toDoubleOrNull() ?: 0.0
+            coeffReactPower * nPK[index]
+        }
+        Log.d("Service", "kptg: ${kptg.sum()}")
+        return kptg.sum()
+    }
+
+
+
+
     fun calculateNPh(epInputs: List<EPInput>): List<Double> {
         val NPhList = epInputs.map { input ->
             val count = input.count.toIntOrNull() ?: 0
@@ -46,13 +71,7 @@ class CalculatorService{
     }
 
     fun calculateGroupUtilizationCoeff(epInputs: List<EPInput>): Double {
-        val nPK = epInputs.map { input ->
-            val count = input.count.toIntOrNull() ?: 0
-            val capacity = input.capacity.toDoubleOrNull() ?: 0.0
-            val coefUsage = input.coefUsage.toDoubleOrNull() ?: 0.0
-
-            count * capacity * coefUsage
-        }
+        val nPK = calculateNPK(epInputs)
 
         val nP = epInputs.map { input ->
             val count = input.count.toIntOrNull() ?: 0
@@ -66,60 +85,33 @@ class CalculatorService{
 
     }
 
-    fun calculateEfCount(epInputs: List<EPInput>): Int {
-        val sum1 = epInputs.map { input ->
-            val count = input.count.toIntOrNull() ?: 0
-            val capacity = input.capacity.toDoubleOrNull() ?: 0.0
-
-            (count * capacity).pow(2)
-        }
-        Log.d("Service", "sum1: $sum1")
-
-        val sum2 = epInputs.map { input ->
+    fun calculateEfCount(NPh: Double, epInputs: List<EPInput>): Int {
+        val sum = epInputs.map { input ->
             val count = input.count.toIntOrNull() ?: 0
             val capacity = input.capacity.toDoubleOrNull() ?: 0.0
 
             (count * capacity.pow(2))
         }
-        Log.d("Service", "sum2: $sum2")
+        Log.d("Service", "sum: $sum")
 
-        val result = (sum1.sum() / sum2.sum()).roundToInt()
+        val result = (NPh.pow(2.0) / sum.sum()).roundToInt() + 1
         Log.d("Service", "result: $result")
         return result
     }
 
     fun calculatePp(Kp: Double, epInputs: List<EPInput>): Double {
-        val nPK = epInputs.map { input ->
-            val count = input.count.toIntOrNull() ?: 0
-            val capacity = input.capacity.toDoubleOrNull() ?: 0.0
-            val coefUsage = input.coefUsage.toDoubleOrNull() ?: 0.0
-
-            count.toDouble() * capacity * coefUsage
-        }
-
+        val nPK = calculateNPK(epInputs)
         return Kp * nPK.sum()
     }
 
     fun calculateQp(en: Int, epInputs: List<EPInput>): Double {
         if(en <= 10) {
-            val kptg = epInputs.map { input ->
-                val capacity = input.capacity.toDoubleOrNull() ?: 0.0
-                val coefUsage = input.coefUsage.toDoubleOrNull() ?: 0.0
-                val coeffReactPower = input.coeffReactPower.toDoubleOrNull() ?: 0.0
-
-                coeffReactPower * capacity * coefUsage
-            }
-            return kptg.sum() * 1.1
+            val kptg = calculatePKTgSum(epInputs)
+            return kptg * 1.1
         }
         else if (en > 10){
-            val kptg = epInputs.map { input ->
-                val capacity = input.capacity.toDoubleOrNull() ?: 0.0
-                val coefUsage = input.coefUsage.toDoubleOrNull() ?: 0.0
-                val coeffReactPower = input.coeffReactPower.toDoubleOrNull() ?: 0.0
-
-                coeffReactPower * capacity * coefUsage
-            }
-            return kptg.sum()
+            val kptg = calculatePKTgSum(epInputs)
+            return kptg
         }
         return 0.0
     }

@@ -67,7 +67,7 @@ fun CalculatorScreen(
             val I = calculatorService.calculateI(epInputs)
             val sumCount = calculatorService.calculateSumCount(epInputs)
             val KV = calculatorService.calculateGroupUtilizationCoeff(epInputs)
-            val nE = calculatorService.calculateEfCount(epInputs)
+            val nE = calculatorService.calculateEfCount(NPhSum, epInputs)
             val Kp = 1.25
             val Pp = calculatorService.calculatePp(Kp, epInputs)
             val Qp = calculatorService.calculateQp(nE, epInputs)
@@ -96,23 +96,23 @@ fun CalculatorScreen(
         val KV = calculatorService.calculateGroupUtilizationCoeff(epInputs)
 //        Log.d("Calculator1", "KV: $KV")
 
-        val nE = calculatorService.calculateEfCount(epInputs)
-        Log.d("Calculator2", "nE: $nE")
+        val nE = calculatorService.calculateEfCount(NPhSum, epInputs)
+//        Log.d("Calculator2", "nE: $nE")
 
-//        how??
+//        how?? table 6.3/1.3
         val Kp = 1.25
 
         val Pp = calculatorService.calculatePp(Kp, epInputs)
 //        Log.d("Calculator2", "Pp: $Pp")
 
         val Qp = calculatorService.calculateQp(nE, epInputs)
-        Log.d("Calculator2", "Qp: $Qp")
+//        Log.d("Calculator3", "Qp: $Qp")
 
         val Sp = calculatorService.calculateSp(Pp, Qp)
-        Log.d("Calculator2", "Sp: $Sp")
+//        Log.d("Calculator4", "Sp: $Sp")
 
         val Ip = calculatorService.calculateIp(Pp, epInputs[3].voltage.toDouble())
-//        Log.d("Calculator2", "Ip: $Ip")
+        Log.d("Calculator5", "Ip: $Ip")
 
     }
 
