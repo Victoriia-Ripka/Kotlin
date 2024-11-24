@@ -1,5 +1,8 @@
 package com.example.pw_6.data
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class EPInput(
     var name: String = "",
     var coeffUsefulAct: String = "",
