@@ -50,7 +50,6 @@ fun CalculatorScreen(
     fun loadJsonFromAssets(fileName: String): String {
         return try {
             val jsonString = context.assets.open(fileName).bufferedReader().use { it.readText() }
-//            Log.d("CalculatorScreen", "Loaded JSON: $jsonString")
             jsonString
         } catch (e: Exception) {
             Log.e("CalculatorScreen", "Error loading JSON file: ${e.message}")
@@ -60,9 +59,7 @@ fun CalculatorScreen(
 
     fun parseJsonToEPInputs(json: String): List<EPInput> {
         return try {
-//            Log.d("CalculatorScreen", "Raw JSON: $json") // Debug JSON string
             val parsedList: List<EPInput> = Json.decodeFromString(json)
-//            Log.d("CalculatorScreen", "Parsed EPInputs: $parsedList") // Debug parsed objects
             parsedList
         } catch (e: Exception) {
             e.printStackTrace()
@@ -183,7 +180,6 @@ fun CalculatorScreen(
                 } else {
                     epInputs.clear()
                     epInputs.addAll(parsedInputs)
-//                    Log.d("CalculatorScreen", "EPInputs populated successfully.")
                 }
             } catch (e: Exception) {
                 Log.e("CalculatorScreen", "Error loading inputs: ${e.message}")
