@@ -25,7 +25,7 @@ class CalculatorService{
             val coeffReactPower = input.coeffReactPower.toDoubleOrNull() ?: 0.0
             coeffReactPower * nPK[index]
         }
-        Log.d("Service", "kptg: ${kptg.sum()}")
+//        Log.d("Service", "kptg: ${kptg.sum()}")
         return kptg.sum()
     }
 
@@ -92,10 +92,10 @@ class CalculatorService{
 
             (count * capacity.pow(2))
         }
-        Log.d("Service", "sum: $sum")
+//        Log.d("Service", "sum: $sum")
 
         val result = (NPh.pow(2.0) / sum.sum()).roundToInt() + 1
-        Log.d("Service", "result: $result")
+//        Log.d("Service", "result: $result")
         return result
     }
 
