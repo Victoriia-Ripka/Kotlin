@@ -19,6 +19,8 @@ import com.example.pw_6.ui.components.Header
 import com.example.pw_6.ui.components.Title
 import com.example.pw_6.ui.entry.bodyModifier
 import kotlinx.serialization.json.Json
+import kotlin.math.pow
+import kotlin.math.sqrt
 
 @Composable
 fun CalculatorScreen(
@@ -28,13 +30,16 @@ fun CalculatorScreen(
     val context = LocalContext.current
     val epInputs = remember { mutableStateListOf<EPInput>() }
     val epExtraInputs = remember { mutableStateListOf<EPInput>() }
-    var resultArray by remember { mutableStateOf(DoubleArray(7)) }
+    var resultArray by remember { mutableStateOf(DoubleArray(14)) }
+
+    val allCount = 81.0
+    val allNPh = 2330.0
+    val allNPK = 752.0
+    val allNPKtg = 657.0
+    val allNP2 = 96399.0
 
     LaunchedEffect(Unit) {
         repeat(8) { epInputs.add(EPInput()) }
-    }
-
-    LaunchedEffect(Unit) {
         repeat(2) { epExtraInputs.add(EPInput()) }
     }
 
@@ -67,7 +72,6 @@ fun CalculatorScreen(
     }
 
     fun calculate() {
-
         try {
             //  step3
             val NPhList = calculatorService.calculateNPh(epInputs)              // 80, 28, ...
@@ -95,10 +99,21 @@ fun CalculatorScreen(
             val Ip = calculatorService.calculateIp(Pp, epInputs[3].voltage.toDouble())  // 313
             //        Log.d("Calculator", "Ip: $Ip")
 
-            //  step 5
+            // step 6
+            val allKV = allNPK / allNPh
+            //  Log.d("Calculator all", "KV: $allKV") // 0.32
+            val allNe = allNPh.pow(2.0) / allNP2
+            //  Log.d("Calculator all", "nE: $allNe") // 56
+            val allKp = 0.7
 
-
-            //  step 6
+            val allPp = allKp * allNPK
+            //  Log.d("Calculator all", "Pp: $allPp") // 526
+            val allQp = allKp * allNPKtg
+            //  Log.d("Calculator all", "Qp: $allQp") // 459.9
+            val allSp = sqrt(allPp.pow(2.0) + allQp.pow(2.0))
+            //  Log.d("Calculator all", "Sp: $allSp") // 699
+            val allIp = allPp /  epInputs[3].voltage.toDouble()
+            //  Log.d("Calculator all", "Ip: $allIp") // 1385.26
 
 
             resultArray = doubleArrayOf(
@@ -108,7 +123,14 @@ fun CalculatorScreen(
                 Pp.trimToTwoDecimals(),
                 Qp.trimToTwoDecimals(),
                 Sp.trimToTwoDecimals(),
-                Ip.trimToTwoDecimals()
+                Ip.trimToTwoDecimals(),
+                allKV.trimToTwoDecimals(),
+                allNe.trimToTwoDecimals(),
+                allKp.trimToTwoDecimals(),
+                allPp.trimToTwoDecimals(),
+                allQp.trimToTwoDecimals(),
+                allSp.trimToTwoDecimals(),
+                allIp.trimToTwoDecimals()
             )
 
             Log.d("Calculator", "resultArray: ${resultArray.joinToString()}")
@@ -172,6 +194,42 @@ fun CalculatorScreen(
 
         Spacer(modifier = Modifier.height(20.dp))
 
+        epExtraInputs.forEachIndexed { index, epInput ->
+            Text(
+                text = "Крупні ЕП #${index + 1}",
+                style = MaterialTheme.typography.displayLarge
+            )
+            EPInputFields(
+                epInput = epInput,
+                onUpdate = { updatedInput ->
+                    epInputs[index] = updatedInput
+                }
+            )
+            Spacer(modifier = Modifier.height(10.dp))
+        }
+
+        Spacer(modifier = Modifier.height(20.dp))
+
+        Button(onClick = {
+            try {
+                val json = loadJsonFromAssets("extraEPdata.json")
+                val parsedInputs = parseJsonToEPInputs(json)
+                if (parsedInputs.isEmpty()) {
+                    Log.e("CalculatorScreen", "Parsed inputs are empty. Check JSON structure.")
+                } else {
+                    epExtraInputs.clear()
+                    epExtraInputs.addAll(parsedInputs)
+//                    Log.d("CalculatorScreen", "EPInputs populated successfully.")
+                }
+            } catch (e: Exception) {
+                Log.e("CalculatorScreen", "Error loading inputs: ${e.message}")
+            }
+        }) {
+            Text("Заповнити поля")
+        }
+
+        Spacer(modifier = Modifier.height(20.dp))
+
         FancyButton(
             text = "Розрахувати",
             onClick = { calculate() }
@@ -221,6 +279,41 @@ fun CalculatorScreen(
             )
             Text(
                 text = "Розрахунковий груповий струм для ШР1=ШР2=ШР3: ${resultArray[6]}",
+                style = TextStyle(fontSize = 16.sp),
+                modifier = Modifier.padding(top = 16.dp)
+            )
+            Text(
+                text = "Коефіцієнти використання цеху в цілому: ${resultArray[7]}",
+                style = TextStyle(fontSize = 16.sp),
+                modifier = Modifier.padding(top = 16.dp)
+            )
+            Text(
+                text = "Ефективна кількість ЕП цеху в цілому: ${resultArray[8]}",
+                style = TextStyle(fontSize = 16.sp),
+                modifier = Modifier.padding(top = 16.dp)
+            )
+            Text(
+                text = "Розрахунковий коефіцієнт активної потужності цеху в цілому: ${resultArray[9]}",
+                style = TextStyle(fontSize = 16.sp),
+                modifier = Modifier.padding(top = 16.dp)
+            )
+            Text(
+                text = "Розрахункове активне навантаження на шинах 0,38 кВ ТП: ${resultArray[10]}",
+                style = TextStyle(fontSize = 16.sp),
+                modifier = Modifier.padding(top = 16.dp)
+            )
+            Text(
+                text = "Розрахункове реактивне навантаження на шинах 0,38 кВ ТП: ${resultArray[11]}",
+                style = TextStyle(fontSize = 16.sp),
+                modifier = Modifier.padding(top = 16.dp)
+            )
+            Text(
+                text = "Повна потужність на шинах 0,38 кВ ТП: ${resultArray[12]}",
+                style = TextStyle(fontSize = 16.sp),
+                modifier = Modifier.padding(top = 16.dp)
+            )
+            Text(
+                text = "Розрахунковий груповий струм на шинах 0,38 кВ ТП: ${resultArray[13]}",
                 style = TextStyle(fontSize = 16.sp),
                 modifier = Modifier.padding(top = 16.dp)
             )
